@@ -1,0 +1,17 @@
+{
+	"name": "sau/wp-settings-api",
+	"description": "Library for simple add settings in WP",
+	"minimum-stability": "stable",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Akinay Sau",
+			"email": "akinaysau@gmail.com"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"Sau\\WP\\SettingsAPI\\": "src"
+		}
+	}
+}
