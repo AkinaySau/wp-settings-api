@@ -3,10 +3,13 @@
 	"description": "Library for simple add settings in WP",
 	"minimum-stability": "stable",
 	"license": "MIT",
+	"version": "1.0.0",
 	"authors": [
 		{
 			"name": "Akinay Sau",
-			"email": "akinaysau@gmail.com"
+			"email": "akinay.sau@gmail.com",
+			"homepage": "http://sauri.wp",
+			"role": "Developer"
 		}
 	],
 	"autoload": {
