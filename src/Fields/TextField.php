@@ -6,10 +6,10 @@ namespace Sau\WP\SettingsAPI\Fields;
 
 class TextField extends SettingsField
 {
-    public function __construct(string $id, string $title, ?array $args = null)
+    public function __construct(string $id, string $title, ?array $args = null, $description = null)
     {
-        $args[ 'type' ] = 'text';
-        parent::__construct($id, $title, $args);
+        $args = array_merge(['type' => 'text'], $args ?? []);
+        parent::__construct($id, $title, $args, $description);
     }
 
     public function render()

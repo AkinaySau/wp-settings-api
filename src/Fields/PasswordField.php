@@ -6,9 +6,9 @@ namespace Sau\WP\SettingsAPI\Fields;
 
 class PasswordField extends TextField
 {
-    public function __construct(string $id, string $title, ?array $args = null)
+    public function __construct(string $id, string $title, ?array $args = null, $description = null)
     {
-        $args[ 'type' ] = 'password';
-        parent::__construct($id, $title, $args);
+        $args = array_merge(['type' => 'password'],$args??[]);
+        parent::__construct($id, $title, $args, $description);
     }
 }
