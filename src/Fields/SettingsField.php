@@ -93,11 +93,15 @@ abstract class SettingsField
 
     public function getArgsAsString(): string
     {
-        $params = '';
+        $params = [];
         foreach ($this->getArgs() as $key => $val) {
-            $params .= sprintf('%s="%s"', $key, $val);
+            if ( ! $val) {
+                $params [] = $key;
+            } else {
+                $params [] = sprintf('%s="%s"', $key, $val);
+            }
         }
 
-        return $params;
+        return implode(" ", $params);
     }
 }
