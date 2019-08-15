@@ -44,8 +44,8 @@ class SettingsGroup
     public function __construct(
         string $id,
         string $title,
-        string $page,
-        ?string $description
+        string $page = 'general',
+        ? $description = null
     ) {
         $this->id          = $id;
         $this->title       = $title;
@@ -53,7 +53,11 @@ class SettingsGroup
         $this->page        = $page;
         $this->callback    = function () {
             if ($this->description) {
-                echo $this->description;
+                if (is_string($this->description)) {
+                    echo $this->description;
+                } elseif (is_callable($this->description)) {
+                    call_user_func($this->description);
+                }
             }
         };
         add_action(
