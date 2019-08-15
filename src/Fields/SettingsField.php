@@ -29,22 +29,22 @@ abstract class SettingsField
     private $args;
 
     /**
-     * @var string|callable
+     * @var string|callable|null
      */
     private $description;
 
-    public function __construct(string $id, string $title, ?array $args = null)
+    public function __construct(string $id, string $title, ?array $args = null, $description = null)
     {
-        $this->id    = $id;
-        $this->title = $title;
-        $this->args  = $args ?? [];
+        $this->id          = $id;
+        $this->title       = $title;
+        $this->args        = $args ?? [];
+        $this->description = $description;
     }
 
-    public function add(string $page, string $section, ?$description = null)
+    public function add(string $page, string $section)
     {
-        $this->page        = $page;
-        $this->section     = $section;
-        $this->description = $description;
+        $this->page    = $page;
+        $this->section = $section;
         add_settings_field($this->id, $this->title, [$this, 'render'], $this->page, $this->section, $this->args);
         register_setting($this->page, $this->id);
     }

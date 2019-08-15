@@ -3,7 +3,7 @@
 	"description": "Library for simple add settings in WP",
 	"minimum-stability": "stable",
 	"license": "MIT",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"authors": [
 		{
 			"name": "Akinay Sau",
@@ -16,5 +16,8 @@
 		"psr-4": {
 			"Sau\\WP\\SettingsAPI\\": "src"
 		}
+	},
+	"require": {
+		"php" : "^7.0"
 	}
 }

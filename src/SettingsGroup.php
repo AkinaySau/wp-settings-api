@@ -25,7 +25,7 @@ class SettingsGroup
      */
     private $page;
     /**
-     * @var string|null
+     * @var string|callable|null
      */
     private $description;
     /**
@@ -45,7 +45,7 @@ class SettingsGroup
         string $id,
         string $title,
         string $page = 'general',
-        ? $description = null
+        $description = null
     ) {
         $this->id          = $id;
         $this->title       = $title;

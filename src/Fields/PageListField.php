@@ -9,12 +9,16 @@ class PageListField extends SettingsField
     /**
      * PageListField constructor.
      *
-     * @param string $id
-     * @param string $title
+     * @param string               $id
+     * @param string               $title
+     * @param array|null           $args
+     * @param string|callable|null $description
+     *
+     * @todo need merge args
      */
-    public function __construct(string $id, string $title)
+    public function __construct(string $id, string $title, ?array $args = null, $description = null)
     {
-        parent::__construct($id, $title);
+        parent::__construct($id, $title, $args, null, $description);
     }
 
     public function render()
@@ -24,5 +28,6 @@ class PageListField extends SettingsField
             'selected' => $this->getValue(),
         ];
         wp_dropdown_pages($args);
+        $this->getDescription();
     }
 }

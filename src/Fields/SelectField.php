@@ -13,10 +13,24 @@ class SelectField extends SettingsField
      */
     private $options;
 
-    public function __construct(string $id, string $title, ?array $args = null, ?array $options = null)
-    {
+    /**
+     * SelectField constructor.
+     *
+     * @param string               $id
+     * @param string               $title
+     * @param array|null           $args
+     * @param array|null           $options
+     * @param string|callable|null $description
+     */
+    public function __construct(
+        string $id,
+        string $title,
+        ?array $args = null,
+        ?array $options = null,
+        $description = null
+    ) {
         $this->options = $options;
-        parent::__construct($id, $title, $args);
+        parent::__construct($id, $title, $args, $description);
     }
 
     public function render()
@@ -34,12 +48,13 @@ class SelectField extends SettingsField
                 $val == $selected ? ' selected' : ''
             );
         }
-        echo sprintf(
+        printf(
             '<select name="%1$s" %2$s>%3$s</select>',
             $this->getId(),
             $this->getArgsAsString(),
             implode('', $options)
         );
+        $this->getDescription();
     }
 
     /**
