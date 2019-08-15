@@ -28,6 +28,11 @@ abstract class SettingsField
      */
     private $args;
 
+    /**
+     * @var string|callable
+     */
+    private $description;
+
     public function __construct(string $id, string $title, ?array $args = null)
     {
         $this->id    = $id;
@@ -35,11 +40,11 @@ abstract class SettingsField
         $this->args  = $args ?? [];
     }
 
-    public function add(string $page, string $section)
+    public function add(string $page, string $section, ?$description = null)
     {
-
-        $this->page    = $page;
-        $this->section = $section;
+        $this->page        = $page;
+        $this->section     = $section;
+        $this->description = $description;
         add_settings_field($this->id, $this->title, [$this, 'render'], $this->page, $this->section, $this->args);
         register_setting($this->page, $this->id);
     }
@@ -103,5 +108,17 @@ abstract class SettingsField
         }
 
         return implode(" ", $params);
+    }
+
+    /**
+     * @return void
+     */
+    public function getDescription()
+    {
+        if (is_string($this->description)) {
+            printf('<p class="description" id="%1$s-description">%2$s</p>', $this->getId(), $this->description);
+        } elseif (is_callable($this->description)) {
+            call_user_func($this->description);
+        }
     }
 }

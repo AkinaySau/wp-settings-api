@@ -14,11 +14,12 @@ class TextField extends SettingsField
 
     public function render()
     {
-        echo sprintf(
+        printf(
             '<input name="%1$s" value="%2$s" %3$s/>',
             $this->getId(),
             $this->getValue(),
             $this->getArgsAsString()
         );
+        $this->getDescription();
     }
 }
