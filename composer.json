@@ -2,7 +2,7 @@
 	"name": "sau/wp-settings-api",
 	"description": "Library for simple add settings in WP",
 	"minimum-stability": "stable",
-	"license": "MIT",
+	"license": "BSD-3-Clause",
 	"version": "1.0.6",
 	"authors": [
 		{
